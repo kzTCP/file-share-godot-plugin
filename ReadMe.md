@@ -1,6 +1,6 @@
- # FileShare Plugin for Godot 4.X
+# FileShare Plugin for Godot 4.X
 
-Android file sharing plugin that allows your Godot app to share files to other apps and receive files from other apps via Android 's share intent system.
+Android file sharing plugin that allows your Godot app to share files to other apps and receive files from other apps via Android's share intent system.
 
 ## Features
 
@@ -11,19 +11,19 @@ Android file sharing plugin that allows your Godot app to share files to other a
 
 ## Installation
 
-1. Copy the `addons/FileShare` folder to your project' s `addons/` directory
-2.Enable the plugin in ** Project Settings → Plugins ** (toggle "Enable" checkbox for FileShare)
-3.The plugin will automatically register `FileShareHelper` as an autoload singleton
+1. Copy the `addons/FileShare` folder to your project's `addons/` directory
+2. Enable the plugin in **Project Settings → Plugins** (toggle "Enable" checkbox for FileShare)
+3. The plugin will automatically register `FileShareHelper` as an autoload singleton
 
 Alternatively, you can manually add the autoload:
- - Go to ** Project Settings → Autoload **
- - Add `FileShareHelper.gd` with name `FileShareHelper`
+- Go to **Project Settings → Autoload**
+- Add `FileShareHelper.gd` with name `FileShareHelper`
 
- ## Usage
+## Usage
 
- ##  # Sharing Files
+### Sharing Files
 
-`` `gdscript
+```gdscript
 # Share a file from user directory
 FileShareHelper.share("user://screenshot.png")
 
@@ -32,13 +32,13 @@ FileShareHelper.share("res://exported_data.csv")
 
 # Share from absolute path
 FileShareHelper.share("/sdcard/Download/myfile.pdf")
-` ``
+```
 
- ##  # Receiving Files
+### Receiving Files
 
 Connect to the `file_received` signal to handle incoming files:
 
-`` `gdscript
+```gdscript
 func _ready():
     if FileShareHelper.is_available():
         FileShareHelper.file_received.connect(_on_file_received)
@@ -53,22 +53,22 @@ func _on_file_received(file_path: String):
         var content = file.get_as_text()
         file.close()
         # Do something with the content
-` ``
+```
 
- ##  # Checking Availability
+### Checking Availability
 
 Always check if the plugin is available before using it:
 
-`` `gdscript
+```gdscript
 if FileShareHelper.is_available():
     FileShareHelper.share("user://mydata.txt")
 else:
     print("Cannot share - plugin not available")
-` ``
+```
 
- ##  # Full Example
+### Full Example
 
-`` `gdscript
+```gdscript
 extends Node
 
 func _ready():
@@ -100,29 +100,29 @@ func _on_file_received(path: String):
         file.close()
         # Update UI or process content
         $Label.text = "Received: " + content
-` ``
+```
 
- ## Platform Support
+## Platform Support
 
- -  ** Android ** : Fully supported
- -  ** iOS ** : Not supported(will silently fail)
- -  ** Windows / Linux / macOS ** : Not supported(will silently fail)
+- **Android**: Fully supported
+- **iOS**: Not supported (will silently fail)
+- **Windows/Linux/macOS**: Not supported (will silently fail)
 
- ## Configuration
+## Configuration
 
 The plugin automatically configures the Android manifest to:
- - Add the `SEND` intent filter
- - Set launch mode to `singleTask` to handle multiple instances properly
+- Add the `SEND` intent filter
+- Set launch mode to `singleTask` to handle multiple instances properly
 
- ## Limitations
+## Limitations
 
- ##  # Receive Functionality Bug
-⚠️ ** Known Issue ** : The receive functionality has a bug when the app is already running in the background.If you:
-1.Have the app open in the background
-2.Go to a file manager app
-3.Share a file and select your app
+### Receive Functionality Bug
+⚠️ **Known Issue**: The receive functionality has a bug when the app is already running in the background. If you:
+1. Have the app open in the background
+2. Go to a file manager app
+3. Share a file and select your app
 
-The app will crash.This is due to Android 's activity lifecycle handling when an intent is received while the app is in the background.
+The app will crash. This is due to Android's activity lifecycle handling when an intent is received while the app is in the background.
 
 ## Signals
 
@@ -146,11 +146,11 @@ Returns `true` if the plugin is available (i.e., running on Android with the plu
 ## Troubleshooting
 
 ### "Plugin not available" Error
-- Make sure you' re running on an Android device / emulator
- - Ensure the plugin is enabled in Project Settings
- - Check that the `.aar` files exist in `addons/FileShare/bin/`
+- Make sure you're running on an Android device/emulator
+- Ensure the plugin is enabled in Project Settings
+- Check that the `.aar` files exist in `addons/FileShare/bin/`
 
- ##  # Sharing Doesn 't Work
+### Sharing Doesn't Work
 - Verify the file exists at the given path
 - Check Android permissions (storage permission may be needed)
 - Ensure the file is readable
