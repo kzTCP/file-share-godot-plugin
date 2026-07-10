@@ -2,6 +2,10 @@
 
 Android file sharing plugin that allows your Godot app to share files to other apps and receive files from other apps via Android's share intent system.
 
+[![Watch the tutorial on YouTube Shorts](https://img.youtube.com/vi/Z1Y_F_Dj35U/0.jpg)](https://www.youtube.com/shorts/Z1Y_F_Dj35U)
+
+[Download from Godot Asset Store](https://store.godotengine.org/asset/kzcode/file-share-for-anroid/)
+
 ## Features
 
 - **Share files** to other Android apps (email, messaging, cloud storage, etc.)
@@ -162,4 +166,15 @@ Returns `true` if the plugin is available (i.e., running on Android with the plu
 
 ## Credits
 
-Developed by kzcode_
+Developed by kzcode_  
+
+---
+
+## 📦 Download Plugin
+
+You can download the plugin files from the repository or follow the installation instructions above.
+[Download from Godot Asset Store](https://store.godotengine.org/asset/kzcode/file-share-for-anroid/)
+
+## License
+
+GPL v3 License - This plugin is free to use, modify, and distribute under the terms of the GNU General Public License version 3.
